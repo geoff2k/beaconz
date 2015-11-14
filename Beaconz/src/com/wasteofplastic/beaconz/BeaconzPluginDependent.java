@@ -2,6 +2,7 @@ package com.wasteofplastic.beaconz;
 
 import java.util.logging.Logger;
 
+import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
 
 /**
@@ -39,4 +40,6 @@ public abstract class BeaconzPluginDependent {
     public final Scorecard getScorecard() {
         return this.beaconzPlugin.getScorecard();
     }
+
+    public final World getBeaconzWorld() { return this.beaconzPlugin.getBeaconzWorld(); }
 }

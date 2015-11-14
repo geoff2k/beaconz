@@ -165,7 +165,7 @@ public class Register extends BeaconzPluginDependent {
                 // Devisualize - TODO: make async or something
                 for (Iterator<Point2D> lineIt = new LineIterator(line); lineIt.hasNext();) {
                     Point2D current = lineIt.next();
-                    Block b = Beaconz.getBeaconzWorld().getBlockAt((int)current.getX(), Beaconz.getBeaconzWorld().getMaxHeight()-1, (int)current.getY());
+                    Block b = getBeaconzWorld().getBlockAt((int)current.getX(), getBeaconzWorld().getMaxHeight()-1, (int)current.getY());
                     b.setType(Material.AIR);
                 }
                 it.remove();

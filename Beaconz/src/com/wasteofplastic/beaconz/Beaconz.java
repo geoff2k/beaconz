@@ -16,9 +16,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Beaconz extends JavaPlugin {
     BeaconPopulator beaconPop;
     Register register;
-    static World beaconzWorld;
+    private static World beaconzWorld;
     private static Beaconz plugin;
-    static BlockPopulator bp;
+    private static BlockPopulator bp;
     private Scorecard scorecard;
 
     @Override
@@ -40,7 +40,7 @@ public class Beaconz extends JavaPlugin {
         getServer().getScheduler().runTask(this, new Runnable() {
 
             public void run() {
-            Beaconz.getBeaconzWorld();
+            getBeaconzWorld();
             // Load the scorecard
             scorecard = new Scorecard(plugin);
             // Add teams

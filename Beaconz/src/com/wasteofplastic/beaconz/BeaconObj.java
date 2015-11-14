@@ -143,7 +143,7 @@ public class BeaconObj extends BeaconzPluginDependent {
         Point2D current;
         for (Iterator<Point2D> it = new LineIterator(line); it.hasNext();) {
             current = it.next();
-            Block b = Beaconz.getBeaconzWorld().getBlockAt((int)current.getX(), Beaconz.getBeaconzWorld().getMaxHeight()-1, (int)current.getY());
+            Block b = getBeaconzWorld().getBlockAt((int)current.getX(), getBeaconzWorld().getMaxHeight()-1, (int)current.getY());
             if (b.getType().equals(Material.AIR)) {
                 MaterialData md = getScorecard().getBlockID(ownership);
                 b.setType(md.getItemType());
@@ -270,14 +270,14 @@ public class BeaconObj extends BeaconzPluginDependent {
         Point2D current;
         for (Iterator<Point2D> it = new LineIterator(line); it.hasNext();) {
             current = it.next();
-            Block b = Beaconz.getBeaconzWorld().getBlockAt((int)current.getX(), Beaconz.getBeaconzWorld().getMaxHeight()-1, (int)current.getY());
+            Block b = getBeaconzWorld().getBlockAt((int)current.getX(), getBeaconzWorld().getMaxHeight()-1, (int)current.getY());
             if (!b.getType().equals(Material.AIR)) {
                 b.setType(Material.AIR);
             }
         }
         // TODO: One block is being missed. It's a rounding issue. Need to make the line inclusive of these end points
-        Beaconz.getBeaconzWorld().getBlockAt(x, Beaconz.getBeaconzWorld().getMaxHeight()-1, z).setType(Material.AIR);
-        Beaconz.getBeaconzWorld().getBlockAt(beacon.getX(), Beaconz.getBeaconzWorld().getMaxHeight()-1, beacon.getZ()).setType(Material.AIR);
+        getBeaconzWorld().getBlockAt(x, getBeaconzWorld().getMaxHeight()-1, z).setType(Material.AIR);
+        getBeaconzWorld().getBlockAt(beacon.getX(), getBeaconzWorld().getMaxHeight()-1, beacon.getZ()).setType(Material.AIR);
         links.remove(beacon);
     }
 
@@ -307,7 +307,7 @@ public class BeaconObj extends BeaconzPluginDependent {
      * @return true if clear, false if not
      */
     public boolean isClear() {
-        Block beacon = Beaconz.getBeaconzWorld().getBlockAt((int)location.getX(), height, (int)location.getY());
+        Block beacon = getBeaconzWorld().getBlockAt((int)location.getX(), height, (int)location.getY());
         getLogger().info("DEBUG: block type is " + beacon.getType());
         getLogger().info("DEBUG: location is " + (int)location.getX() + " " + height + " " + (int)location.getY());
         if (beacon.getRelative(BlockFace.NORTH).getType().equals(Material.AIR)
